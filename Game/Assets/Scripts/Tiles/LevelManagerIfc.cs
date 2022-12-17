@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public interface LevelManagerIfc {
@@ -43,6 +42,12 @@ public interface LevelManagerIfc {
     void TryPlaceItem(Vector2 position);
 
     /// <summary>
+    /// todo
+    /// </summary>
+    /// <param name="position"></param>
+    void TryPlaceBomb(Vector2 position); //Consider how bombs are placed.
+
+    /// <summary>
     ///
     /// <param name="position"></param>
     void PlaceItem(GameObject item, Vector2 position); // Todo make an interface or something for items.
@@ -52,8 +57,9 @@ public interface LevelManagerIfc {
     /// </summary>
     /// <param name="position"></param>
     /// <param name="direction"></param>
+    /// <param name="isGhost"></param>
     /// <returns></returns>
-    Vector2 GetMovableDirection(Vector2 position, Vector2 direction);
+    Vector2Int GetWalkableDirection(Vector2 position, Vector2 desiredDirection, bool isGhost = false);
 
     /// <summary>
     /// Explodes the block at <paramref name="position"/>.

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea8317ca5cb814b458547b5c2d6eb7dc, type: 3}
   m_Name: InactiveBombTile
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -1902917897002446259, guid: 975894a97cf0594469745d6e9e8bd8e0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
@@ -36,5 +36,5 @@ MonoBehaviour:
   m_ColliderType: 1
   m_explosionAnimation: []
   m_explosionAnimationDuration: 0
-  m_health: 0
-  m_isPassthroughDestructible: 0
+  m_health: 1
+  m_isPassthroughDestructible: 1

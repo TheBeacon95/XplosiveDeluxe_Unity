@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class LevelManager : MonoBehaviour, LevelManagerIfc {
+    [SerializeField]
     private Tilemap m_environment;
 
 
@@ -39,23 +40,26 @@ public class LevelManager : MonoBehaviour, LevelManagerIfc {
         }
         // If the player is horizontal cells and trying to move perpendicularly to them, move them into the direction of the free cell if there is one.
         else if ((isTryingToMoveHorizontally && isBetweenVerticalCells) || (isTryingToMoveVertically && isBetweenHorizontalCells)) {
-            EnvironmentTileAbs floorCell = m_environment.GetTile<EnvironmentTileAbs>((Vector3Int)(position.Floor() + direction));
-            EnvironmentTileAbs ceilCell = m_environment.GetTile<EnvironmentTileAbs>((Vector3Int)(position.Ceiling() + direction));
-            return GetFreeDirection(floorCell, ceilCell, direction, isGhost);
+            EnvironmentTileAbs floorCell = m_environment.GetTile<EnvironmentTileAbs>(m_environment.WorldToCell((Vector3Int)(position.Floor() + direction)));
+            EnvironmentTileAbs ceilCell = m_environment.GetTile<EnvironmentTileAbs>(m_environment.WorldToCell((Vector3Int)(position.Ceiling() + direction)));
+            return GetFreeDirection(floorCell, ceilCell, position, isGhost);
         }
         // If the player is not between cells, move them in the desired direction, if its free.
         else if (!isBetweenHorizontalCells && !isBetweenVerticalCells) {
-            return m_environment.GetTile<EnvironmentTileAbs>((Vector3Int)(position.Ceiling() + direction)).IsWalkable(isGhost) ? direction : Vector2Int.zero;
+            Vector3Int nextPosition = m_environment.WorldToCell((Vector3Int)(position.Ceiling() + direction));
+            EnvironmentTileAbs nextTile = m_environment.GetTile<EnvironmentTileAbs>(nextPosition);
+            if (nextTile == null) {
+                return direction;
+            }
+            else {
+                return nextTile.IsWalkable(isGhost) ? direction : Vector2Int.zero;
+            }
         }
         // Unexpected case: The direction is neither horizontal nor vertical.
         else {
             // Todo: "Assert go"
             return Vector2Int.zero;
         }
-    }
-
-    public Vector2 GetMovableDirection(Vector2 position, Vector2 direction) {
-        throw new System.NotImplementedException();
     }
 
     public Vector2 GetNearestPlayer(Vector2 position) {
@@ -95,14 +99,23 @@ public class LevelManager : MonoBehaviour, LevelManagerIfc {
         bool isFloorCellWalkable = floorCell != null ? floorCell.IsWalkable(isGhost) : true;
         bool isCeilCellWalkable = ceilCell != null ? ceilCell.IsWalkable(isGhost) : true;
 
+        Vector2 direction = Vector2.zero;
         if (isFloorCellWalkable) {
-            return (position.Floor() - position).Ceiling();
+            direction = position.Floor() - position;
         }
         else if (isCeilCellWalkable) {
-            return (position.Ceiling() - position).Ceiling();
+            direction = position.Ceiling() - position;
         }
         else {
             return Vector2Int.zero;
+        }
+
+        // If the direction is negative it needs to be rounded down. Otherwise the vector will be (0,0).
+        if (direction.x < 0 || direction.y < 0) {
+            return direction.Floor();
+        }
+        else {
+            return direction.Ceiling();
         }
     }
 
