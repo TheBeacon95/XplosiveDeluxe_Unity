@@ -1,0 +1,16 @@
+{
+    "name": "Player.Interfaces",
+    "rootNamespace": "",
+    "references": [
+        "GUID:0ee7ef4ced2f118429c960b035d3000e"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,17 @@
+{
+    "name": "Monster.Impl",
+    "rootNamespace": "",
+    "references": [
+        "GUID:0ee7ef4ced2f118429c960b035d3000e",
+        "GUID:04d569d1446df944289d80409737af89"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
