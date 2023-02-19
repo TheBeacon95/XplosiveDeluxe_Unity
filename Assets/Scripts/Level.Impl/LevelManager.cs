@@ -30,15 +30,22 @@ public class LevelManager : MonoBehaviour, LevelManagerIfc {
     }
 
 
-    public IList<Vector2> GetAvailableDirections(Vector2 position, bool isBrickMuncher = false) {
-        throw new System.NotImplementedException();
+    public IList<Vector2Int> GetAvailableDirections(Vector2Int position, bool isBrickMuncher = false) {
+        List<Vector2Int> availableDirections = new List<Vector2Int>();
+        foreach (Vector2Int direction in possibleDirections) {
+            EnvironmentTileAbs nextTile = GetTile(position + direction);
+            if (nextTile == null || nextTile.IsWalkable(false)) {
+                availableDirections.Add(direction);
+            }
+        }
+        return availableDirections;
     }
 
     public Vector2Int GetWalkableDirection(Vector2 position, Vector2 desiredDirection, bool isGhost) {
         bool isTryingToMoveHorizontally = desiredDirection.y == 0;
         bool isTryingToMoveVertically = desiredDirection.x == 0;
-        bool isBetweenHorizontalCells = Math.Round(position.x) != position.x;
-        bool isBetweenVerticalCells = Math.Round(position.y) != position.y;
+        bool isBetweenHorizontalCells = IsBetweenHorizontalCells(position);
+        bool isBetweenVerticalCells = IsBetweenVerticalCells(position);
 
         Vector2Int direction = desiredDirection.Floor();
 
@@ -80,7 +87,24 @@ public class LevelManager : MonoBehaviour, LevelManagerIfc {
     }
 
     public Vector2 GetNearestPlayer(Vector2 position) {
-        throw new System.NotImplementedException();
+        PlayerIfc closestPlayer = null;
+        float shortestDistance = float.MaxValue;
+        foreach (PlayerIfc player in transform.GetComponentsInChildren<PlayerIfc>()) {
+            if (closestPlayer == null) {
+                closestPlayer = player;
+            }
+            else {
+                float distance = (position - player.Position).magnitude;
+                if (distance < shortestDistance) {
+                    closestPlayer = player;
+                    shortestDistance = distance;
+                }
+                else if (distance == shortestDistance && (UnityEngine.Random.value * 2) % 2 == 0) {
+                    closestPlayer = player;
+                }
+            }
+        }
+        return closestPlayer.Position;
     }
 
     public void PlaceBlock(Vector2 position) {
@@ -108,6 +132,10 @@ public class LevelManager : MonoBehaviour, LevelManagerIfc {
 
     public UnityEvent<Vector2Int> TryPlaceBomb(BombProperties properties, Vector2Int position) {
         return m_bombManager.CreateBomb(properties, position, this);
+    }
+
+    public bool IsBetweenBlocks(Vector2 position) {
+        return IsBetweenHorizontalCells(position) || IsBetweenVerticalCells(position);
     }
 
     #endregion
@@ -170,6 +198,14 @@ public class LevelManager : MonoBehaviour, LevelManagerIfc {
         }
     }
 
+    private bool IsBetweenHorizontalCells(Vector2 position) {
+        return Math.Round(position.x) != position.x;
+    }
+
+    private bool IsBetweenVerticalCells(Vector2 position) {
+        return Math.Round(position.y) != position.y;
+    }
+
     #endregion
 
     #region Private Fields
@@ -178,6 +214,7 @@ public class LevelManager : MonoBehaviour, LevelManagerIfc {
     private Tilemap m_environment;
     private BombManager m_bombManager;
     private static LevelManager s_instance;
+    private static readonly Vector2Int[] possibleDirections = { Vector2Int.up, Vector2Int.right, Vector2Int.down, Vector2Int.left };
 
     #endregion
 }

@@ -47,7 +47,7 @@ public interface PlayerIfc {
     /// <summary>
     /// Increases the length of the players bomb explosion by one.
     /// </summary>
-    void IncreaseBombLength();
+    void IncreaseBombStrength();
 
     /// <summary>
     /// Increases the amount of available bombs by one.

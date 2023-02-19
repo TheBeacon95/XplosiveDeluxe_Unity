@@ -90,7 +90,7 @@ public interface LevelManagerIfc {
     /// <param name="position"></param>
     /// <param name="isBrickMuncher"></param>
     /// <returns></returns>
-    IList<Vector2> GetAvailableDirections(Vector2 position, bool isBrickMuncher = false);
+    IList<Vector2Int> GetAvailableDirections(Vector2Int position, bool isBrickMuncher = false);
 
     /// <summary>
     /// Returns the player closest to <paramref name="position"/>.
@@ -98,6 +98,13 @@ public interface LevelManagerIfc {
     /// <param name="position"></param>
     /// <returns></returns>
     Vector2 GetNearestPlayer(Vector2 position);
+
+    /// <summary>
+    /// Returns wether an object is betweenCells or exactly on one.
+    /// </summary>
+    /// <param name="position"></param>
+    /// <returns></returns>
+    bool IsBetweenBlocks(Vector2 position);
 
     #endregion
 

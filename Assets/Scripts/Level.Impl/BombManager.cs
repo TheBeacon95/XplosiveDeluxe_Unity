@@ -20,7 +20,7 @@ public class BombManager : MonoBehaviour, BombManagerIfc {
         }
         else {
             // Todo: add properties.
-            Bomb bomb = (Bomb)Instantiate(m_bombPrefab, new Vector3(position.x, position.y), Quaternion.identity);
+            Bomb bomb = Instantiate(m_bombPrefab, new Vector3(position.x, position.y), Quaternion.identity);
             m_activeBombs.Add(position);
             bomb.DestroyedEvent.AddListener(OnBombDestroyed);
             return bomb.DestroyedEvent;
