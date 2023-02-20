@@ -15,12 +15,13 @@ public class HostileMovement : MonsterMovementAbs {
         }
         //Todo: Monsters shouldn't be able to turn back.
         else {
-            return GetBestDirection(monster.Position.Round(), levelManager);
+            return GetBestDirection(monster.Position.Round(), monster.Direction, levelManager);
         }
     }
 
-    private Vector2Int GetBestDirection(Vector2Int position, LevelManagerIfc levelManager) {
+    private Vector2Int GetBestDirection(Vector2Int position, Vector2Int currentDirection, LevelManagerIfc levelManager) {
         IList<Vector2Int> possibleDirections = levelManager.GetAvailableDirections(position);
+        RemoveUnusablePaths(possibleDirections, currentDirection);
         Vector2 nearestPlayer = levelManager.GetNearestPlayer(position);
         float shortestDistanceToPlayer = float.MaxValue;
         Vector2Int bestDirection = Vector2Int.zero;
@@ -37,5 +38,20 @@ public class HostileMovement : MonsterMovementAbs {
             }
         }
         return bestDirection;
+    }
+
+    /// <Summary>
+    /// Monsters that use hostile movement cannot turn around, unless there's no other path to take.
+    /// This method removes the opposite direction if others are available.
+    /// <Summary>
+    /// todo: param
+    private void RemoveUnusablePaths(IList<Vector2Int> availablePaths, Vector2Int currentDirection) {
+        // There is no reason to remove a path if there are either one ore no paths at all, since the monster will either not move at all or turn around.
+        if (availablePaths.Count > 1) {
+            Vector2Int oppositeDirection = currentDirection * (-1);
+            if (availablePaths.Contains(oppositeDirection)) {
+                availablePaths.Remove(oppositeDirection);
+            }
+        }
     }
 }

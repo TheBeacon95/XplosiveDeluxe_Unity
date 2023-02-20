@@ -36,7 +36,7 @@ public class MonsterType : ScriptableObject {
     protected MonsterBehaviourAbs m_behavior;
 
     [SerializeField]
-    protected MonsterSpeed m_speed;
+    protected EntitySpeed m_speed;
 
     #endregion
 

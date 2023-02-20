@@ -179,7 +179,7 @@ public class PlayerController : EntityAbs, PlayerIfc {
         }
         else {
             SetDirection(movableDirection);
-            StartCoroutine(Move(movableDirection, m_status.Speed));
+            StartCoroutine(Move(movableDirection, (int)m_status.Speed));
         }
     }
 

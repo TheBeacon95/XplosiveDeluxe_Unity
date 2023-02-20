@@ -60,20 +60,14 @@ public class PlayerStatus : ScriptableObject {
         }
     }
 
-    [Reset(DEFAULT_SPEED)]
-    public int Speed {
+    [Reset((int)DEFAULT_SPEED)]
+    public int Speed { //Todo: make EntitySpeed
         get {
-            return m_speed;
+            return (int)m_speed;
         }
         private set {
-            if (value < MIN_SPEED) {
-                m_speed = MIN_SPEED;
-            }
-            else if (value > MAX_SPEED) {
-                m_speed = MAX_SPEED;
-            }
-            else {
-                m_speed = value;
+            if (Enum.IsDefined(typeof(EntitySpeed), value)) {
+                m_speed = (EntitySpeed)value;
             }
         }
     }
@@ -211,10 +205,8 @@ public class PlayerStatus : ScriptableObject {
 
     // Speed
     [SerializeField]
-    private int m_speed;
-    private const int DEFAULT_SPEED = 4;
-    private const int MIN_SPEED = 1;
-    private const int MAX_SPEED = 6;
+    private EntitySpeed m_speed;
+    private const EntitySpeed DEFAULT_SPEED = EntitySpeed.Fast;
 
     // Speed
     [SerializeField]
