@@ -8,6 +8,28 @@ public class Bomb : MonoBehaviour, BombIfc {
         private set;
     }
 
+    public bool IsBrickMaker {
+        get {
+            return false;
+        }
+    }
+
+    public int Strength {
+        get {
+            return m_strength;
+        }
+        set {
+            m_strength = value;
+        }
+
+    }
+
+    public Vector2Int Position {
+        get {
+            return new Vector2(transform.position.x, transform.position.y).Round();
+        }
+    }
+
     public void Destroy() {
         DestroyedEvent.Invoke(transform.position.ToVector2().Round());
         Destroy(gameObject);
@@ -32,6 +54,9 @@ public class Bomb : MonoBehaviour, BombIfc {
     #endregion
 
     #region Private Fields
+
+    [SerializeField]
+    private int m_strength;
 
     private const float EXPLOSION_TIME = 4f;
     private static readonly WaitForSeconds EXPLOSION_YIELD_INSTRUCTION = new WaitForSeconds(EXPLOSION_TIME);

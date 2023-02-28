@@ -1,8 +1,21 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 /// <summary>
 /// Todo
 /// </summary>
 public interface PlayerIfc {
+
+    #region Events
+
+    UnityEvent<Vector2Int> DirectionChangedEvent {
+        get;
+    }
+
+    UnityEvent<bool> IsMovingChangedEvent {
+        get;
+    }
+
+    #endregion
 
     #region Properties
 

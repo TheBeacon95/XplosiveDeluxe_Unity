@@ -6,6 +6,16 @@ public class PlayerController : EntityAbs, PlayerIfc {
 
     #region PlayerIfc Members
 
+    public UnityEvent<Vector2Int> DirectionChangedEvent {
+        get;
+        private set;
+    }
+
+    public UnityEvent<bool> IsMovingChangedEvent {
+        get;
+        private set;
+    }
+
     public string Name {
         get;
         private set;
@@ -114,6 +124,7 @@ public class PlayerController : EntityAbs, PlayerIfc {
     private Vector2Int m_direction;
 
     private LevelManagerIfc m_levelManager;
+    private bool m_isIdle;
 
     // Constants
     private const float DEFAULT_EFFECT_TIME = 10f;
@@ -132,7 +143,10 @@ public class PlayerController : EntityAbs, PlayerIfc {
     }
 
     private void Awake() {
+        m_isIdle = true;
         m_levelManager = transform.parent.GetComponent<LevelManagerIfc>();
+        DirectionChangedEvent = new UnityEvent<Vector2Int>();
+        IsMovingChangedEvent = new UnityEvent<bool>();
     }
 
     private void Update() {
@@ -142,7 +156,10 @@ public class PlayerController : EntityAbs, PlayerIfc {
         }
         else {
             Vector2Int direction = m_controls.PressedDirection;
-            if (direction != Vector2Int.zero) {
+            if (direction == Vector2Int.zero) {
+                SetIsIdle(true);
+            }
+            else {
                 TryMove(direction);
             }
         }
@@ -172,41 +189,32 @@ public class PlayerController : EntityAbs, PlayerIfc {
         return (m_status.BombCount - m_activeBombs) > 0;
     }
 
-    private void TryMove(Vector2 direction) {
-        Vector2 movableDirection = m_levelManager.GetWalkableDirection(transform.position, direction, m_status.HasGhostEffect);
+    private void TryMove(Vector2Int direction) {
+        Vector2Int movableDirection = m_levelManager.GetWalkableDirection(transform.position, direction, m_status.HasGhostEffect);
         if (movableDirection == Vector2.zero) {
             SetDirection(direction);
+            SetIsIdle(true);
         }
         else {
+            SetIsIdle(false);
             SetDirection(movableDirection);
-            StartCoroutine(Move(movableDirection, (int)m_status.Speed));
+            StartCoroutine(Move(movableDirection, m_status.Speed));
         }
     }
 
-    private void SetDirection(Vector2 newDirection) {
-        //if (m_direction == newDirection) {
-        //    return;
-        //}
+    private void SetDirection(Vector2Int newDirection) {
+        if (m_direction != newDirection) {
+            m_direction = newDirection;
+            DirectionChangedEvent.Invoke(newDirection);
+        }
+    }
 
-        //m_direction = newDirection;
-        //DisableAllSpriteRenderers();
-
-        //if (m_direction == Vector2.up) {
-        //    m_activeSpriteRenderer = m_spriteRendererUp;
-        //}
-        //else if (m_direction == Vector2.down) {
-        //    m_activeSpriteRenderer = m_spriteRendererDown;
-        //}
-        //else if (m_direction == Vector2.left) {
-        //    m_activeSpriteRenderer = m_spriteRendererLeft;
-        //}
-        //else if (m_direction == Vector2.right) {
-        //    m_activeSpriteRenderer = m_spriteRendererRight;
-        //}
-        //else {
-        //    // Do nothing
-        //}
+    private void SetIsIdle(bool isIdle) {
+        if (m_isIdle != isIdle) {
+            m_isIdle = isIdle;
+            IsMovingChangedEvent.Invoke(!isIdle);
+        }
+    }
 
         #endregion
-    }
 }
