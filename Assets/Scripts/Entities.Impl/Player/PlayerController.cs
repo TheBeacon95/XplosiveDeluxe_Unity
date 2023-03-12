@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Tilemaps;
 
 public class PlayerController : EntityAbs, PlayerIfc {
 
@@ -94,6 +95,12 @@ public class PlayerController : EntityAbs, PlayerIfc {
         throw new System.NotImplementedException();
     }
 
+    public void Kill() {
+        if (!m_status.HasShieldEffect) {
+            Die();
+        }
+    }
+
     #endregion
 
     #region EntityAbs Members
@@ -110,6 +117,12 @@ public class PlayerController : EntityAbs, PlayerIfc {
         }
     }
 
+    public override SpriteHandlerAbs SpriteHandler {
+        get {
+            return m_spriteHandler;
+        }
+    }
+
     #endregion
 
     #region Private Fields
@@ -120,10 +133,17 @@ public class PlayerController : EntityAbs, PlayerIfc {
     [SerializeField]
     private PlayerControls m_controls;
 
+    [SerializeField]
+    private SpriteHandlerAbs m_spriteHandler;
+
+    [SerializeField]
+    private Tile m_deathBlock;
+
     private int m_activeBombs;
     private Vector2Int m_direction;
 
     private LevelManagerIfc m_levelManager;
+    private BombManagerIfc m_bombManager;
     private bool m_isIdle;
 
     // Constants
@@ -142,16 +162,22 @@ public class PlayerController : EntityAbs, PlayerIfc {
         throw new NotImplementedException();
     }
 
+    private void Die() {
+        m_levelManager.PlaceBlock(Position, m_deathBlock);
+        Destroy(gameObject);
+    }
+
     private void Awake() {
         m_isIdle = true;
         m_levelManager = transform.parent.GetComponent<LevelManagerIfc>();
+        m_bombManager = (BombManagerIfc)m_levelManager.GetManager<BombManagerIfc>();
         DirectionChangedEvent = new UnityEvent<Vector2Int>();
         IsMovingChangedEvent = new UnityEvent<bool>();
     }
 
     private void Update() {
         // Move the player.
-        if (m_isMoving) {
+        if (IsMoving) {
             // Do nothing
         }
         else {
@@ -176,7 +202,7 @@ public class PlayerController : EntityAbs, PlayerIfc {
         properties.IsBrickMaker = m_status.HasBrickMakerEffect;
         Vector2 pos = transform.position;
 
-        UnityEvent<Vector2Int> destroyedEvent = m_levelManager.TryPlaceBomb(properties, pos.Round());
+        UnityEvent<Vector2Int> destroyedEvent = m_bombManager.CreateBomb(properties, pos.Round());
         if (destroyedEvent != null) {
             m_activeBombs++;
             destroyedEvent.AddListener((Vector2Int) => {
@@ -216,5 +242,5 @@ public class PlayerController : EntityAbs, PlayerIfc {
         }
     }
 
-        #endregion
+    #endregion
 }

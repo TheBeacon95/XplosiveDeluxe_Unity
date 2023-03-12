@@ -11,6 +11,12 @@ public class MonsterType : ScriptableObject {
         }
     }
 
+    public SpriteHandlerAbs SpriteHandler {
+        get {
+            return m_spriteHandler;
+        }
+    }
+
     #endregion
 
     #region Public Methods
@@ -34,6 +40,9 @@ public class MonsterType : ScriptableObject {
 
     [SerializeField]
     protected MonsterBehaviourAbs m_behavior;
+
+    [SerializeField]
+    protected SpriteHandlerAbs m_spriteHandler;
 
     [SerializeField]
     protected EntitySpeed m_speed;

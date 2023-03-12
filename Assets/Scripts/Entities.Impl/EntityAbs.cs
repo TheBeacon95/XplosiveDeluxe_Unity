@@ -1,16 +1,33 @@
 using System.Collections;
 using UnityEngine;
 
-public abstract class EntityAbs : MonoBehaviour {
+public abstract class EntityAbs : MonoBehaviour, EntityIfc {
+
+    #region EntityIfc Members
+
+    public virtual Vector2 Position {
+        get {
+            return gameObject.transform.position.ToVector2();
+        }
+    }
+
+    public virtual Vector2Int Direction {
+        get {
+            return Vector2Int.zero;
+        }
+    }
+
+    #endregion
 
     #region Public Properties
 
-    public abstract Vector2 Position {
+    public abstract SpriteHandlerAbs SpriteHandler {
         get;
     }
 
-    public abstract Vector2Int Direction {
+    public virtual bool IsMoving {
         get;
+        protected set;
     }
 
     #endregion
@@ -18,7 +35,7 @@ public abstract class EntityAbs : MonoBehaviour {
     #region Protected Methods
 
     protected IEnumerator Move(Vector2 direction, int speed) {
-        m_isMoving = true;
+        IsMoving = true;
         float timeToMove = 1f / speed / 8;
         float elapsedTime = 0f;
         Vector2 originalPosition = transform.position;
@@ -30,14 +47,8 @@ public abstract class EntityAbs : MonoBehaviour {
             yield return null;
         }
         transform.position = targetPosition;
-        m_isMoving = false;
+        IsMoving = false;
     }
-
-    #endregion
-
-    #region Protected Fields
-
-    protected bool m_isMoving;
 
     #endregion
 }

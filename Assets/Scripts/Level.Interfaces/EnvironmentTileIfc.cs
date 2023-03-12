@@ -1,4 +1,5 @@
-﻿/// <summary>
+﻿using UnityEngine.Tilemaps;
+/// <summary>
 ///
 /// </summary>
 public interface EnvironmentTileIfc {
@@ -15,7 +16,7 @@ public interface EnvironmentTileIfc {
     /// <summary>
     /// IsCalled when an explosion hits it.
     /// </summary>
-    void Explode();
+    Tile Explode();
 
     #endregion
 

@@ -3,7 +3,7 @@
 /// This class represents all wall like block tiles.
 /// </summary>
 [CreateAssetMenu(fileName = "IndestructibleBlockTile", menuName = "Tiles/IndestructibleBlockTile")]
-public class IndestructibleBlockTile : EnvironmentTileAbs {
+public sealed class IndestructibleBlockTile : EnvironmentTileAbs {
 
     #region EnvironmentTileAbs Members
 
@@ -11,8 +11,8 @@ public class IndestructibleBlockTile : EnvironmentTileAbs {
         return false;
     }
 
-    protected override void OnExplode() {
-        // Do nothing
+    protected override EnvironmentTileAbs OnExplode() {
+        return this;
     }
 
 

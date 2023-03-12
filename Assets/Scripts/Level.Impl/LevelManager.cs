@@ -1,32 +1,15 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.Tilemaps;
 
 public class LevelManager : MonoBehaviour, LevelManagerIfc {
-
-    #region Public Properties
-
-    public static LevelManager Instance {
-        get {
-            return s_instance;
-        }
-    }
-
-    #endregion
 
     #region LevelManagerIfc Members
 
     public bool IsBlockStateOn {
         get;
         private set;
-    }
-
-    //Tile tileToDestroy = m_environment.GetTile<Tile>(tilePosition);
-    public void DestroyTile(Vector2 position, float time_s = 0) {
-        Vector3Int tilePosition = m_environment.WorldToCell(position);
-        m_environment.SetTile(tilePosition, null);
     }
 
 
@@ -104,11 +87,18 @@ public class LevelManager : MonoBehaviour, LevelManagerIfc {
                 }
             }
         }
-        return closestPlayer.Position;
+
+        if (closestPlayer == null) {
+            return Vector2.zero;
+        }
+        else {
+            return closestPlayer.Position;
+        }
     }
 
-    public void PlaceBlock(Vector2 position) {
-        throw new System.NotImplementedException();
+    public void PlaceBlock(Vector2 position, Tile tile) {
+        Vector3Int cell = m_environment.WorldToCell(position);
+        m_environment.SetTile(cell, tile);
     }
 
     //public void SetBlockState(bool setOn) {
@@ -120,7 +110,15 @@ public class LevelManager : MonoBehaviour, LevelManagerIfc {
     //}
 
     public bool TryExplode(Vector2 position) {
-        throw new System.NotImplementedException();
+        Vector3Int cell = m_environment.WorldToCell(position);
+        EnvironmentTileIfc tileToExplode = GetTile((Vector2Int)cell);
+        if (tileToExplode != null) {
+            m_environment.SetTile(cell, tileToExplode.Explode());
+            return tileToExplode.IsExplosionStopper;
+        }
+        else {
+            return false;
+        }
     }
 
     //public void TryPlaceItem(Vector2 position) {
@@ -130,12 +128,20 @@ public class LevelManager : MonoBehaviour, LevelManagerIfc {
         throw new NotImplementedException();
     }
 
-    public UnityEvent<Vector2Int> TryPlaceBomb(BombProperties properties, Vector2Int position) {
-        return m_bombManager.CreateBomb(properties, position, this);
-    }
+    //public UnityEvent<Vector2Int> TryPlaceBomb(BombIfc bomb, Vector2Int position) {
+    //    UnityEvent<Vector2Int> destroyedEvent = m_bombManager.CreateBomb(bomb.Properties, position);
+    //    if (destroyedEvent != null) {
+    //        m_explosionManager.
+    //    }
+    //    return destroyedEvent;
+    //}
 
     public bool IsBetweenBlocks(Vector2 position) {
         return IsBetweenHorizontalCells(position) || IsBetweenVerticalCells(position);
+    }
+
+    public Component GetManager<T>() {
+        return GetComponentInChildren(typeof(T));
     }
 
     #endregion
@@ -189,13 +195,7 @@ public class LevelManager : MonoBehaviour, LevelManagerIfc {
     }
 
     private void Awake() {
-        if (s_instance != null) {
-            Destroy(gameObject);
-        }
-        else {
-            s_instance = this;
-            m_bombManager = gameObject.AddComponent<BombManager>();
-        }
+        m_bombManager = GetComponentInChildren<BombManagerIfc>();
     }
 
     private bool IsBetweenHorizontalCells(Vector2 position) {
@@ -212,8 +212,8 @@ public class LevelManager : MonoBehaviour, LevelManagerIfc {
 
     [SerializeField]
     private Tilemap m_environment;
-    private BombManager m_bombManager;
-    private static LevelManager s_instance;
+    private BombManagerIfc m_bombManager;
+    private ExplosionManagerIfc m_explosionManager;
     private static readonly Vector2Int[] possibleDirections = { Vector2Int.up, Vector2Int.right, Vector2Int.down, Vector2Int.left };
 
     #endregion

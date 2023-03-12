@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14d1c0392466bf042b72f1452de4157b, type: 3}
+  m_Name: Explosion Sprite Handler
+  m_EditorClassIdentifier: 
+  m_sprites:
+  - {fileID: -692685068, guid: c5583b7a4f6d44946af13786a72481c9, type: 3}
+  - {fileID: -1219654476, guid: c5583b7a4f6d44946af13786a72481c9, type: 3}
+  - {fileID: 361032386, guid: c5583b7a4f6d44946af13786a72481c9, type: 3}
+  - {fileID: -1595342671, guid: c5583b7a4f6d44946af13786a72481c9, type: 3}
+  - {fileID: -836800705, guid: c5583b7a4f6d44946af13786a72481c9, type: 3}
+  - {fileID: -2106188851, guid: c5583b7a4f6d44946af13786a72481c9, type: 3}
+  - {fileID: 291202268, guid: c5583b7a4f6d44946af13786a72481c9, type: 3}
+  - {fileID: 67081503, guid: c5583b7a4f6d44946af13786a72481c9, type: 3}
+  - {fileID: 1355700624, guid: c5583b7a4f6d44946af13786a72481c9, type: 3}
+  - {fileID: 856262577, guid: c5583b7a4f6d44946af13786a72481c9, type: 3}
+  - {fileID: 452237169, guid: c5583b7a4f6d44946af13786a72481c9, type: 3}
+  - {fileID: -23125651, guid: c5583b7a4f6d44946af13786a72481c9, type: 3}
+  m_defaultSprite: {fileID: -692685068, guid: c5583b7a4f6d44946af13786a72481c9, type: 3}

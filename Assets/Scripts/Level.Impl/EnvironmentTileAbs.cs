@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -14,9 +13,9 @@ public abstract class EnvironmentTileAbs : Tile, EnvironmentTileIfc {
         }
     }
 
-    public void Explode() {
+    public Tile Explode() {
         // Todo: Add the animation here
-        OnExplode();
+        return OnExplode();
     }
 
     public abstract bool IsWalkable(bool isGhost);
@@ -28,8 +27,7 @@ public abstract class EnvironmentTileAbs : Tile, EnvironmentTileIfc {
     /// <summary>
     /// Reacts to explosions. Animations are already handled.
     /// </summary>
-    /// <param name="levelManager"></param>
-    protected abstract void OnExplode();
+    protected abstract EnvironmentTileAbs OnExplode();
 
     #endregion
 
@@ -40,17 +38,6 @@ public abstract class EnvironmentTileAbs : Tile, EnvironmentTileIfc {
 
     [SerializeField]
     protected float m_explosionAnimationDuration;
-
-    protected LevelManagerIfc m_levelManager;
-
-    #endregion
-
-    #region Private Methods
-
-    private void Awake() {
-        // Todo: initialize LevelManager
-        m_levelManager = null;
-    }
 
     #endregion
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
 /// Represents all blocks that change when the on/off state changes.
@@ -13,9 +12,9 @@ public class StateBlockTile : EnvironmentTileAbs {
     public override bool IsWalkable(bool isGhost) {
         switch (m_type) {
             case StateBlockType.OnBlock:
-                return !m_levelManager.IsBlockStateOn;
+            //return !m_levelManager.IsBlockStateOn;
             case StateBlockType.OffBlock:
-                return m_levelManager.IsBlockStateOn;
+            //return m_levelManager.IsBlockStateOn;
             case StateBlockType.OnSwitch:
             case StateBlockType.OffSwitch:
             case StateBlockType.StateSwitch:
@@ -27,7 +26,7 @@ public class StateBlockTile : EnvironmentTileAbs {
         }
     }
 
-    protected override void OnExplode() {
+    protected override EnvironmentTileAbs OnExplode() {
         switch (m_type) {
             case StateBlockType.OnSwitch:
                 break;
@@ -42,6 +41,7 @@ public class StateBlockTile : EnvironmentTileAbs {
                 // Do nothing.
                 break;
         }
+        return this;
     }
 
     #endregion
@@ -58,7 +58,7 @@ public class StateBlockTile : EnvironmentTileAbs {
     #region Private Methods
 
     private void UpdateSprite() {
-        sprite = m_levelManager.IsBlockStateOn ? m_onSprite : m_offSprite;
+        //sprite = m_levelManager.IsBlockStateOn ? m_onSprite : m_offSprite;
     }
 
     #endregion

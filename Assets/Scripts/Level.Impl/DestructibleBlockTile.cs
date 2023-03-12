@@ -3,7 +3,7 @@
 /// Todo
 /// </summary>
 [CreateAssetMenu(fileName = "DestructibleBlockTile", menuName = "Tiles/DestructibleBlockTile")]
-public sealed class DestructibleBlockTile : EnvironmentTileAbs {
+public class DestructibleBlockTile : EnvironmentTileAbs {
 
     #region EnvironmentTileAbs
 
@@ -11,15 +11,8 @@ public sealed class DestructibleBlockTile : EnvironmentTileAbs {
         return isGhost;
     }
 
-    protected override void OnExplode() {
-        m_health--;
-        if (m_health <= 0 || m_isPassthroughDestructible) {
-            // Destroy the block
-            m_levelManager.DestroyTile(transform.GetPosition());
-        }
-        else {
-            // Change the sprite
-        }
+    protected override EnvironmentTileAbs OnExplode() {
+        return null;
     }
 
     public override bool IsExplosionStopper {
@@ -31,9 +24,6 @@ public sealed class DestructibleBlockTile : EnvironmentTileAbs {
     #endregion
 
     #region Private Fields
-
-    [SerializeField]
-    private int m_health;
 
     [SerializeField]
     private bool m_isPassthroughDestructible;

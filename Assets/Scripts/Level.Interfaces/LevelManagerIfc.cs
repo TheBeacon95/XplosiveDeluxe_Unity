@@ -1,24 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
+using UnityEngine.Tilemaps;
 
 public interface LevelManagerIfc {
 
     #region Methods
-
-    /// <summary>
-    /// TODO
-    /// </summary>
-    /// <param name="objectToInstantiate"></param>
-    /// <param name="position"></param>
-    //void InstantiateGameObject(GameObject objectToInstantiate, Vector2 position);
-
-    /// <summary>
-    ///
-    /// </summary>
-    /// <param name="position"></param>
-    /// <param name="time_s"></param>
-    void DestroyTile(Vector2 position, float time_s = 0);
 
     ///// <summary>
     /////
@@ -34,7 +20,7 @@ public interface LevelManagerIfc {
     ///
     /// </summary>
     /// <param name="position"></param>
-    void PlaceBlock(Vector2 position);
+    void PlaceBlock(Vector2 position, Tile tile);
 
     ///// <summary>
     /////
@@ -51,7 +37,7 @@ public interface LevelManagerIfc {
     /// null: Bomb could not be placed.
     /// UnityEvent: Destroyed event of the successfully created bomb
     /// </returns>
-    UnityEvent<Vector2Int> TryPlaceBomb(BombProperties properties, Vector2Int position);
+    //UnityEvent<Vector2Int> TryPlaceBomb(BombProperties properties, Vector2Int position);
 
     /// <summary>
     /// todo
@@ -105,6 +91,13 @@ public interface LevelManagerIfc {
     /// <param name="position"></param>
     /// <returns></returns>
     bool IsBetweenBlocks(Vector2 position);
+
+    /// <summary>
+    /// Gets a manager of type T.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <returns></returns>
+    Component GetManager<T>();
 
     #endregion
 

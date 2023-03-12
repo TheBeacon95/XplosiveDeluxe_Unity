@@ -3,7 +3,7 @@ using UnityEngine.Events;
 /// <summary>
 /// Todo
 /// </summary>
-public interface PlayerIfc {
+public interface PlayerIfc : EntityIfc {
 
     #region Events
 
@@ -14,6 +14,8 @@ public interface PlayerIfc {
     UnityEvent<bool> IsMovingChangedEvent {
         get;
     }
+
+    void Kill();
 
     #endregion
 
@@ -37,13 +39,6 @@ public interface PlayerIfc {
     /// True if the player currently has the ghost effect.
     /// </summary>
     bool IsGhost {
-        get;
-    }
-
-    /// <summary>
-    /// Exposes the exact position of the player.
-    /// </summary>
-    Vector2 Position {
         get;
     }
 

@@ -3,7 +3,11 @@ guid: 7cc5d953de599474ba40f947cc4b15fe
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - m_status: {instanceID: 0}
+  - m_controls: {instanceID: 0}
+  - m_spriteHandler: {instanceID: 0}
+  - m_deathBlock: {fileID: 11400000, guid: 6429bdc3c90b32b43a5caec0667bde8e, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -187,6 +187,7 @@ public class PlayerStatus : ScriptableObject {
 
     #region Private Fields
 
+    [SerializeField]
     private PlayerEffect m_effect; // TODO: Make resettable property.
 
     // Bomb Strength

@@ -14,7 +14,7 @@ public class MonsterController : EntityAbs {
     }
     private void Update() {
         // Move the player.
-        if (m_isMoving) {
+        if (IsMoving) {
             // Do nothing
         }
         else {
@@ -64,6 +64,12 @@ public class MonsterController : EntityAbs {
     public override Vector2Int Direction {
         get {
             return m_direction;
+        }
+    }
+
+    public override SpriteHandlerAbs SpriteHandler {
+        get {
+            return m_type.SpriteHandler;
         }
     }
 
