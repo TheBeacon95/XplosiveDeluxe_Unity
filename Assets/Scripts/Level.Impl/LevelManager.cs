@@ -17,7 +17,9 @@ public class LevelManager : MonoBehaviour, LevelManagerIfc {
         List<Vector2Int> availableDirections = new List<Vector2Int>();
         foreach (Vector2Int direction in possibleDirections) {
             EnvironmentTileAbs nextTile = GetTile(position + direction);
-            if (nextTile == null || nextTile.IsWalkable(false)) {
+            bool isTileWalkable = nextTile == null || nextTile.IsWalkable(false);
+            bool isExplosion = m_explosionManager.IsExplosionHere(position + direction);
+            if (isTileWalkable && !isExplosion) {
                 availableDirections.Add(direction);
             }
         }
@@ -196,6 +198,7 @@ public class LevelManager : MonoBehaviour, LevelManagerIfc {
 
     private void Awake() {
         m_bombManager = GetComponentInChildren<BombManagerIfc>();
+        m_explosionManager = GetComponentInChildren<ExplosionManagerIfc>();
     }
 
     private bool IsBetweenHorizontalCells(Vector2 position) {

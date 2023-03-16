@@ -12,26 +12,42 @@ public class MonsterController : EntityAbs {
             Destroy(gameObject);
         }
     }
+
+    private void Start() {
+        m_type.Init(this, m_levelManager);
+    }
+
     private void Update() {
         // Move the player.
-        if (IsMoving) {
-            // Do nothing
+        if (m_isMoving || m_isStalled) {
+            return;
+        }
+
+        m_direction = m_type.GetDirection(this, m_levelManager);
+        if (m_direction == Vector2Int.zero) {
+            IsIdle = true;
         }
         else {
-            m_direction = m_type.GetDirection(this, m_levelManager);
+            IsIdle = false;
             StartCoroutine(Move(m_direction, m_type.Speed));
         }
     }
 
     private void OnTriggerStay2D(Collider2D other) {
         if (other.gameObject.layer == LayerMask.NameToLayer("PlayerLayer")) {
-            m_type.Attack(this, other.gameObject.GetComponent<PlayerIfc>());
+            Attack(other.gameObject.GetComponent<PlayerIfc>());
         }
         else if (other.gameObject.layer == LayerMask.NameToLayer("ItemLayer")) {
             m_type.Collect(this, other.gameObject.GetComponent<CollectableIfc>());
         }
         else if (other.gameObject.layer == LayerMask.NameToLayer("ExplosionLayer")) {
             m_type.Explode(this, other.gameObject.GetComponent<ExplosionIfc>());
+        }
+    }
+
+    private void Attack(PlayerIfc player) {
+        if (!m_isStalled && player != null) {
+            m_type.Attack(this, player);
         }
     }
 
@@ -50,6 +66,7 @@ public class MonsterController : EntityAbs {
     private LevelManagerIfc m_levelManager;
 
     private Vector2Int m_direction;
+    private bool m_isStalled;
 
     #endregion
 
@@ -70,6 +87,15 @@ public class MonsterController : EntityAbs {
     public override SpriteHandlerAbs SpriteHandler {
         get {
             return m_type.SpriteHandler;
+        }
+    }
+
+    public override bool IsStalled {
+        get {
+            return m_isStalled;
+        }
+        set {
+            m_isStalled = value;
         }
     }
 

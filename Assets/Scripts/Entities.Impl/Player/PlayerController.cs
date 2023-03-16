@@ -144,7 +144,6 @@ public class PlayerController : EntityAbs, PlayerIfc {
 
     private LevelManagerIfc m_levelManager;
     private BombManagerIfc m_bombManager;
-    private bool m_isIdle;
 
     // Constants
     private const float DEFAULT_EFFECT_TIME = 10f;
@@ -168,7 +167,7 @@ public class PlayerController : EntityAbs, PlayerIfc {
     }
 
     private void Awake() {
-        m_isIdle = true;
+        IsIdle = true;
         m_levelManager = transform.parent.GetComponent<LevelManagerIfc>();
         m_bombManager = (BombManagerIfc)m_levelManager.GetManager<BombManagerIfc>();
         DirectionChangedEvent = new UnityEvent<Vector2Int>();
@@ -177,7 +176,7 @@ public class PlayerController : EntityAbs, PlayerIfc {
 
     private void Update() {
         // Move the player.
-        if (IsMoving) {
+        if (m_isMoving) {
             // Do nothing
         }
         else {
@@ -236,8 +235,8 @@ public class PlayerController : EntityAbs, PlayerIfc {
     }
 
     private void SetIsIdle(bool isIdle) {
-        if (m_isIdle != isIdle) {
-            m_isIdle = isIdle;
+        if (IsIdle != isIdle) {
+            IsIdle = isIdle;
             IsMovingChangedEvent.Invoke(!isIdle);
         }
     }

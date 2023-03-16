@@ -37,6 +37,11 @@ public class ExplosionManager : MonoBehaviour, ExplosionManagerIfc {
         m_explosionList = new List<ExplosionIfc>();
     }
 
+    //private void Start() {
+    //    Explosion explosionCenter = Instantiate(m_explosionPrefab, new Vector3(0, 3, 0), Quaternion.identity, gameObject.transform);
+    //    m_explosionList.Add(explosionCenter); //todo set at 0,3
+    //}
+
     private void CreateDirectionalExplosion(Vector2Int origin, Vector2Int direction, int strength) {
         Explosion explosion = Instantiate(m_explosionPrefab, origin.ToVector3(), Quaternion.identity, gameObject.transform);
         explosion.SubsidedEvent.AddListener(OnExplosionSubsided);

@@ -13,4 +13,11 @@ public interface EntityIfc {
         get;
     }
 
+    /// <summary>
+    /// Returns wether the entity should use the idle sprites or the moving ones.
+    /// </summary>
+    bool IsIdle {
+        get;
+    }
+
 }

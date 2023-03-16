@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ebbb0042743a844592681577b832543, type: 3}
   m_Name: Player1Status
   m_EditorClassIdentifier: 
-  m_effect: 1
+  m_effect: 0
   m_bombStrength: 2
   m_bombCount: 3
   m_speed: 4

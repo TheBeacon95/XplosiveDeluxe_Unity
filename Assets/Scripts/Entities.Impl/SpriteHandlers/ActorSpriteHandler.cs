@@ -7,26 +7,26 @@ public class ActorSpriteHandler : SpriteHandlerAbs {
     #region SpriteHandlerAbs Members
 
     public override Sprite GetSprite(ref int index, EntityAbs entity) {
-        return RetrieveSprite(entity.Direction, entity.IsMoving, ref index);
+        return RetrieveSprite(entity.Direction, entity.IsIdle, ref index);
     }
 
     #endregion
 
     #region Private Methods
 
-    private Sprite RetrieveSprite(Vector2Int direction, bool isMoving, ref int index) {
+    private Sprite RetrieveSprite(Vector2Int direction, bool isIdle, ref int index) {
         List<Sprite> spriteListToUse;
         if (direction == Vector2Int.up) {
-            spriteListToUse = isMoving ? m_upWalkSprites : m_upIdleSprites;
+            spriteListToUse = isIdle ? m_upIdleSprites : m_upWalkSprites;
         }
         else if (direction == Vector2Int.right) {
-            spriteListToUse = isMoving ? m_rightWalkSprites : m_rightIdleSprites;
+            spriteListToUse = isIdle ? m_rightIdleSprites : m_rightWalkSprites;
         }
         else if (direction == Vector2Int.down) {
-            spriteListToUse = isMoving ? m_downWalkSprites : m_downIdleSprites;
+            spriteListToUse = isIdle ? m_downIdleSprites : m_downWalkSprites;
         }
         else if (direction == Vector2Int.left) {
-            spriteListToUse = isMoving ? m_leftWalkSprites : m_leftIdleSprites;
+            spriteListToUse = isIdle ? m_leftIdleSprites : m_leftWalkSprites;
         }
         else {
             spriteListToUse = m_downIdleSprites;

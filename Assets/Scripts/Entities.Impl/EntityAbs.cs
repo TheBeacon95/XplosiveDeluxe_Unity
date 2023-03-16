@@ -17,6 +17,24 @@ public abstract class EntityAbs : MonoBehaviour, EntityIfc {
         }
     }
 
+    public virtual bool IsIdle {
+        get {
+            return m_isIdle;
+        }
+        protected set {
+            m_isIdle = value;
+        }
+    }
+
+    public virtual bool IsStalled {
+        get {
+            return false;
+        }
+        set {
+            // Do nothing.
+        }
+    }
+
     #endregion
 
     #region Public Properties
@@ -25,17 +43,12 @@ public abstract class EntityAbs : MonoBehaviour, EntityIfc {
         get;
     }
 
-    public virtual bool IsMoving {
-        get;
-        protected set;
-    }
-
     #endregion
 
     #region Protected Methods
 
     protected IEnumerator Move(Vector2 direction, int speed) {
-        IsMoving = true;
+        m_isMoving = true;
         float timeToMove = 1f / speed / 8;
         float elapsedTime = 0f;
         Vector2 originalPosition = transform.position;
@@ -47,8 +60,20 @@ public abstract class EntityAbs : MonoBehaviour, EntityIfc {
             yield return null;
         }
         transform.position = targetPosition;
-        IsMoving = false;
+        m_isMoving = false;
     }
+
+    #endregion
+
+    #region Protected Fields
+
+    protected bool m_isMoving;
+
+    #endregion
+
+    #region Private Fields
+
+    private bool m_isIdle = true;
 
     #endregion
 }

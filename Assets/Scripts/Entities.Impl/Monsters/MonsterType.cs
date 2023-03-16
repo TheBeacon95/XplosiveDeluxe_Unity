@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "MonsterType", menuName = "Monsters/MonsterType")]
@@ -22,8 +23,13 @@ public class MonsterType : ScriptableObject {
     #region Public Methods
 
     public virtual Vector2Int GetDirection(EntityAbs monster, LevelManagerIfc levelManager) {
-        // todo:
         return m_movement.GetDirection(monster, levelManager);
+    }
+
+    public void Init(MonsterController monster, LevelManagerIfc levelManager) {
+        foreach (SpecialBehaviour specialBehaviour in m_specialBehaviours) {
+            specialBehaviour.Init(monster, levelManager);
+        }
     }
 
     public bool IsConfiguredProperly() {
@@ -43,6 +49,9 @@ public class MonsterType : ScriptableObject {
 
     [SerializeField]
     protected SpriteHandlerAbs m_spriteHandler;
+
+    [SerializeField]
+    protected List<SpecialBehaviour> m_specialBehaviours;
 
     [SerializeField]
     protected EntitySpeed m_speed;
