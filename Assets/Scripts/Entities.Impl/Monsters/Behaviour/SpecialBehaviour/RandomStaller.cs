@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "RandomStaller", menuName = "Monsters/Behaviours/Special Behaviours/Random Staller")]
-public class RandomStaller : SpecialBehaviour {
+public class RandomStaller : SpecialBehaviourAbs {
     public override void Init(MonsterController monster, LevelManagerIfc levelManager) {
         monster.StartCoroutine(StallerCoroutine(monster));
     }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class SpecialBehaviour : ScriptableObject {
+public abstract class SpecialBehaviourAbs : ScriptableObject {
 
     /// <summary>
     /// Starts the coroutines that handle Stalling.

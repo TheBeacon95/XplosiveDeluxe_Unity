@@ -38,17 +38,25 @@ public class MonsterController : EntityAbs {
             Attack(other.gameObject.GetComponent<PlayerIfc>());
         }
         else if (other.gameObject.layer == LayerMask.NameToLayer("ItemLayer")) {
-            m_type.Collect(this, other.gameObject.GetComponent<CollectableIfc>());
+            Collect(other.gameObject.GetComponent<CollectableIfc>());
         }
         else if (other.gameObject.layer == LayerMask.NameToLayer("ExplosionLayer")) {
-            m_type.Explode(this, other.gameObject.GetComponent<ExplosionIfc>());
+            Explode(other.gameObject.GetComponent<ExplosionIfc>());
         }
     }
 
     private void Attack(PlayerIfc player) {
         if (!m_isStalled && player != null) {
-            m_type.Attack(this, player);
+            m_type.Attack(player);
         }
+    }
+
+    private void Collect(CollectableIfc collectable) {
+        m_type.Collect(collectable);
+    }
+
+    private void Explode(ExplosionIfc explosion) {
+        m_type.Explode(this, explosion);
     }
 
     //private void Move() {
