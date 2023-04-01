@@ -12,14 +12,14 @@ public class PlayerControls : ScriptableObject {
             if (Input.GetKey(m_inputUp)) {
                 direction = Vector2Int.up;
             }
+            else if (Input.GetKey(m_inputRight)) {
+                direction = Vector2Int.right;
+            }
             else if (Input.GetKey(m_inputDown)) {
                 direction = Vector2Int.down;
             }
             else if (Input.GetKey(m_inputLeft)) {
                 direction = Vector2Int.left;
-            }
-            else if (Input.GetKey(m_inputRight)) {
-                direction = Vector2Int.right;
             }
             return direction;
         }
@@ -38,11 +38,11 @@ public class PlayerControls : ScriptableObject {
     [SerializeField]
     private KeyCode m_inputUp;
     [SerializeField]
+    private KeyCode m_inputRight;
+    [SerializeField]
     private KeyCode m_inputDown;
     [SerializeField]
     private KeyCode m_inputLeft;
-    [SerializeField]
-    private KeyCode m_inputRight;
     [SerializeField]
     private KeyCode m_inputFire;
 

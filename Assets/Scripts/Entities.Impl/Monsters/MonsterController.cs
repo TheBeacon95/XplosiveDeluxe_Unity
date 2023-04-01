@@ -23,14 +23,8 @@ public class MonsterController : EntityAbs {
             return;
         }
 
-        m_direction = m_type.GetDirection(this, m_levelManager);
-        if (m_direction == Vector2Int.zero) {
-            IsIdle = true;
-        }
-        else {
-            IsIdle = false;
-            StartCoroutine(Move(m_direction, m_type.Speed));
-        }
+        Vector2Int direction = m_type.GetDirection(this, m_levelManager);
+        DoMove(direction);
     }
 
     private void OnTriggerStay2D(Collider2D other) {
@@ -62,6 +56,38 @@ public class MonsterController : EntityAbs {
     //private void Move() {
     //    m_type.Move(this, m_levelManager);
     //}
+
+    #endregion
+
+    #region Public Methods
+
+    public void DoMove(Vector2Int direction) {
+        m_direction = direction;
+        if (m_direction == Vector2Int.zero) {
+            IsIdle = true;
+        }
+        else {
+            IsIdle = false;
+            StartCoroutine(Move(m_direction, m_type.Speed));
+        }
+    }
+
+    #endregion
+
+    #region Public Properties
+
+    public MonsterType Type {
+        get {
+            return m_type;
+        }
+        set {
+            if(m_type != value) {
+                m_type.Stop(this, false);
+                m_type = value;
+                m_type.LateInit(this, m_levelManager);
+            }
+        }
+    }
 
     #endregion
 

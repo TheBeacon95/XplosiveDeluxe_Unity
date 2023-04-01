@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,6 +30,19 @@ public class MonsterType : ScriptableObject {
     public void Init(MonsterController monster, LevelManagerIfc levelManager) {
         foreach (SpecialBehaviourAbs specialBehaviour in m_specialBehaviours) {
             specialBehaviour.Init(monster, levelManager);
+        }
+        LateInit(monster, levelManager);
+    }
+
+    public void LateInit(MonsterController monster, LevelManagerIfc levelManager) {
+        foreach (SpecialBehaviourAbs specialBehaviour in m_specialBehaviours) {
+            specialBehaviour.LateInit(monster, levelManager);
+        }
+    }
+
+    public void Stop(MonsterController monster, bool force) {
+        foreach (SpecialBehaviourAbs specialBehaviour in m_specialBehaviours) {
+            specialBehaviour.Stop(monster, force);
         }
     }
 

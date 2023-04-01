@@ -13,7 +13,7 @@ public class LevelManager : MonoBehaviour, LevelManagerIfc {
     }
 
 
-    public IList<Vector2Int> GetAvailableDirections(Vector2Int position, bool isBrickMuncher = false) {
+    public IList<Vector2Int> GetAvailableDirections(Vector2Int position) {
         List<Vector2Int> availableDirections = new List<Vector2Int>();
         foreach (Vector2Int direction in possibleDirections) {
             EnvironmentTileAbs nextTile = GetTile(position + direction);
@@ -144,6 +144,22 @@ public class LevelManager : MonoBehaviour, LevelManagerIfc {
 
     public Component GetManager<T>() {
         return GetComponentInChildren(typeof(T));
+    }
+
+    public List<Vector2Int> GetEatableBricks(Vector2Int position) {
+        List<Vector2Int> directions = new List<Vector2Int>() {
+            Vector2Int.up,
+            Vector2Int.right,
+            Vector2Int.down,
+            Vector2Int.left
+        };
+
+        foreach (Vector2Int direction in directions) {
+            if (!GetTile(position + direction).IsEatable) {
+                directions.Remove(direction);
+            }
+        }
+        return null;
     }
 
     #endregion

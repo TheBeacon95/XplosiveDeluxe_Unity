@@ -4,8 +4,12 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "RandomStaller", menuName = "Monsters/Behaviours/Special Behaviours/Random Staller")]
 public class RandomStaller : SpecialBehaviourAbs {
-    public override void Init(MonsterController monster, LevelManagerIfc levelManager) {
+    public override void LateInit(MonsterController monster, LevelManagerIfc levelManager) {
         monster.StartCoroutine(StallerCoroutine(monster));
+    }
+
+    public override void Stop(MonsterController monster, bool force) {
+        monster.StopCoroutine("StallerCoroutine");
     }
 
     private IEnumerator StallerCoroutine(MonsterController monster) {

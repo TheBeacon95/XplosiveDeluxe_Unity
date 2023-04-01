@@ -13,6 +13,12 @@ public abstract class EnvironmentTileAbs : Tile, EnvironmentTileIfc {
         }
     }
 
+    public virtual bool IsEatable {
+        get {
+            return false;
+        }
+    }
+
     public Tile Explode() {
         // Todo: Add the animation here
         return OnExplode();
