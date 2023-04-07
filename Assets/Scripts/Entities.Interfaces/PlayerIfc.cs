@@ -7,15 +7,20 @@ public interface PlayerIfc : EntityIfc {
 
     #region Events
 
+    /// <summary>
+    /// Gets fired whenever the direction of the player changes.
+    /// The new direction is fired with it.
+    /// </summary>
     UnityEvent<Vector2Int> DirectionChangedEvent {
         get;
     }
 
+    /// <summary>
+    /// Gets fired if the player either starts or stops moving.
+    /// </summary>
     UnityEvent<bool> IsMovingChangedEvent {
         get;
     }
-
-    void Kill();
 
     #endregion
 
@@ -45,6 +50,11 @@ public interface PlayerIfc : EntityIfc {
     #endregion
 
     #region Methods
+
+    /// <summary>
+    /// Kills the player if they are currently killable.
+    /// </summary>
+    void Kill();
 
     /// <summary>
     /// Teleports the player to <paramref name="newPosition"/>.

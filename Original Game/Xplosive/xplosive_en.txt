@@ -1,0 +1,512 @@
+                          XPLOSIVE
+                  A Triple Team Production
+                            1995
+                     - reference guide -
+
+Contents
+
+     1. Introduction
+
+     2. Getting installed...
+
+     3. XPLOSIVE DUEL GAME
+
+     4. XPLOSIVE LEVEL GAME
+
+     5. XPLOSIVE LEVEL EDITOR
+
+     6. Short summary of the game
+
+     7. Keyboard reference
+
+     8. The Extras
+
+     9. The Monsters
+
+    10. Remarks about the freeware version
+
+1 Introduction
+
+  Just like the registered  version,  this  freeware  version
+  consists of three parts.  The  XPLOSIVE  DUEL  GAME  is  of
+  course the classic one. It is great fun when  two  or  more
+  players happen to be in the vicinity. Find out, who is  the
+  best player!
+
+  The XPLOSIVE LEVEL GAME is the  second  part  of  XPLOSIVE.
+  Here the Triple Team and  many  ingenious  level  designers
+  (whom we would like to thank again in  alphabetical  order:
+  Frank & Florian Dietrich, Armin Herbertz,  Michael  Heuser,
+  Stefan Kohl, Bjoern Stahmer) designed over one hundred (154
+  to be exact) levels  which  you  (and  your  friends)  must
+  solve. One to four players can participate and  their  task
+  is to kill all the  monsters  (some  of  them  will  REALLY
+  surprise you!). Warp codes will  keep  up  your  motivation
+  since you can reenter the level in which you last died. The
+  third and last part of  the  game  is  the  XPLOSIVE  LEVEL
+  EDITOR. This tool allows you to  create  your  own  levels,
+  test them, save them and make passwords for them.  You  can
+  easily bundle single levels to sets of levels.
+
+2 Getting installed...
+
+  To install the  game,  copy  all  the  files  in  a  single
+  directory (this is necessary for  all  the  parts  to  work
+  consistently). Change into this directory if  you  want  to
+  play the game.
+
+3 XPLOSIVE DUEL GAME
+
+  Start the XPLOSIVE DUEL GAME by typing 'XDR <ENTER>' at the
+  DOS prompt. The title  screens  will  show  up.  Press  the
+  <ESCAPE> key early to skip them (you cannot avoid the first
+  first screen, though). The menu will show up.  Use  <CURSOR
+  UP> and <CURSOR DOWN> to select (highlight) an option.  Use
+  <SPACE> or <ENTER> to change the option.
+
+  The options are:
+
+  PLAYERS -- 2-4; select  the  number  of  the  participating
+    players
+
+  MATCH POINTS -- 1-9; determines the points a  player  needs
+    to win a game
+
+  BLOCKS -- 0-9;  the  block  density  in  the  game;  higher
+    numbers mean more blocks
+
+  MONSTERS -- 0-9; the monster density; higher  numbers  mean
+    more monsters (you may like to select a  low  number,  if
+    your computer is too slow for a high monster density).
+
+  SELECT (MONSTERS) -- switch on/ off the monsters  according
+    to your liking by using <CURSOR LEFT>, <CURSOR RIGHT> and
+    <SPACE>.
+
+  LET'S GO -- Starts the game.
+
+  QUIT -- Ends the game and saves the current options
+
+  Now everything is ready for an exciting  XPLOSIVE  DUEL.  A
+  sort of sennet sounds just  before  the  game  starts,  the
+  screen fades out and fades in with the first level. In  the
+  left area of the  screen  the  current  game  situation  is
+  displayed while in the right area there is the score panel,
+  showing the number of victories in a match for every single
+  active  player.  Victory  means  survival.  And   that   is
+  therefore the aim of  the  XPLOSIVE  DUEL  GAME:  survival!
+  Challenge the other players and monsters and show them  who
+  is the best by throwing bombs or heating them with a  flame
+  thrower, so that they cannot react anymore and will  prefer
+  the agony of death to  the  stress  of  the  game!  But  be
+  careful: the fate may suddenly turn  against  you  and  you
+  will certainly be very astonished to note  that  the  other
+  players team up against you.
+
+  Pressing <ESCAPE> "skips" a level: no one will get a point,
+  the screen fades out and a new level fades in.  The  Triple
+  Team strongly recommends, based on  their  own  experience,
+  that the players may agree BEFORE the game on  the  use  of
+  the <ESCAPE> key  to  prevent  physical  violence  because:
+  "that idiot pressed <ESCAPE> again. That's enough!" (POW!).
+
+  Holding down <ESCAPE> until the screen is dark returns  you
+  to the menu.
+
+4 XPLOSIVE LEVEL GAME
+
+  Start the XPLOSIVE LEVEL GAME by typing  'XLR  xxxxxxxx.LEV
+  <ENTER>' at the DOS prompt. Exchange  'xxxxxxxx'  with  the
+  level file you want to play. To start  the  game  with  the
+  original Triple Team level files, start it with 'XLR XP.LEV
+  <ENTER>'. The title screens will show up,  skip  them  with
+  <ESCAPE> and the menu will fade in. Highlight an option  by
+  using <CURSOR UP> and <CURSOR DOWN>. Change  an  option  by
+  using <SPACE> or <ENTER>. The first option  is  the  PLAYER
+  number, the second the number of LIVES.  The  third  option
+  (WARP) is special: by using the number keys <1> to <4>  you
+  can enter a warp code  which  will  warp  (teleport,  beam,
+  move) you to the level in which you obtained that code.  At
+  the beginning,  you  don't  know  a  code,  but  after  the
+  completion of each level the appropriate warp code for  the
+  following level will be displayed. However,  this  is  only
+  true for the xp.lev file (113 levels). The  more  difficult
+  levels found in pro.lev (41 levels) and adv.lev (60 levels,
+  taken from both xp.lev and pro.lev) do  not  yield  a  code
+  after each level. In order to avoid typing in  'XLR  XP.LEV
+  <ENTER>' at the DOS prompt each time, you  can  also  start
+  any of the three  level  files  by  executing  one  of  the
+  batches: PLAY_STD.BAT,  PLAY_ADV.BAT  and  PLAY_PRO.BAT.  A
+  non-existing warp code lets you start with the first level.
+  Feel free to fiddle around with these  codes,  but  beware:
+  warping to a higher level accidentally a  beginner  doesn't
+  stand a chance. The option LET'S GO starts the  game  while
+  the option QUIT ends the game.
+
+  In the game the left area of  the  screen  shows  the  game
+  situation, while the right area (the "score panel"  of  the
+  XPLOSIVE DUEL GAME) indicates, how many extra  lives  every
+  players has.
+
+  The <ESCAPE> key means "Surrender". You lose  a  life,  the
+  level restarts and you can try to complete it. A  level  is
+  completed if all the monsters are killed. A warp code  will
+  show up (don't forget to scribble the code down!)  and  the
+  next level will start. Since you must kill all monsters  to
+  finish  a  level,  read  the  monster  descriptions   below
+  carefully to find out, what you must do exactly to  kill  a
+  specific monster.
+
+  IMPORTANT NOTE: if you're really a hot shot, also  try  the
+  PRO.LEV level files on your game disk.
+
+5 XPLOSIVE LEVEL EDITOR
+
+  Start the XPLOSIVE LEVEL EDITOR by typing 'XE' at  the  DOS
+  prompt. Don't get confused when the screen shows  up,  it's
+  all very easy.
+
+  IMPORTANT NOTE: You need a (Microsoft-compatible) mouse for
+  the XPLOSIVE LEVEL EDITOR.
+
+  In the left area of the screen is the level. In  the  right
+  area are the different control options to edit the level.
+
+  In the upper right corner, there are five buttons, to  make
+  a NEW level, to LOAD a level, to SAVE a level,  to  TEST  a
+  level, to select a warp CODE, and to return to DOS.
+
+  Beside these buttons there are the elements with which  you
+  can edit a level. There are  blocks,  the  extras  and  the
+  monsters. Use the arrow buttons to scroll the lists up  and
+  down. Pick out the element which you want to use and  place
+  it in the level using the left mouse  key.  Note  that  the
+  layout of the empty levels cannot be changed and trying  to
+  put an element into one of the reserved positions  will  be
+  rejected. You can change the players' starting position  by
+  picking out the appropriate player and placing  it  on  the
+  map. You  can  stack  monsters  and  players  on  the  same
+  position but don't lose track. The right key of  the  mouse
+  is used to delete single elements in the map. Monsters will
+  be deleted first and then the map  element  is  changed  to
+  floor. You cannot delete players.
+
+  After you create a level you should enter a code  by  using
+  the CODE option. Then you can TEST it (simply click on  the
+  button and the XPLOSIVE LEVEL GAME will start) or  SAVE  it
+  (enter the level  name  WITHOUT  extension:  if  you  enter
+  'STONED' as level, then 'STONED.LEV' will be save). LOADing
+  works much the same.
+
+  Notes:
+
+  * Don't forget to place monsters in the levels. If you want
+    a duel, play XPLOSIVE DUEL GAME.
+
+  * Impossible things can be created with the editor  and  it
+    won't complain. But  you  cannot  solve  these  kinds  of
+    levels in the XPLOSIVE LEVEL GAME.
+
+  * The editor cannot cope with multilevel sets. So,  if  you
+    try to load the original levels (XP) it  will  only  load
+    the very first of them.
+
+  XPLOSIVE LEVEL EDITOR only saves single  levels.  By  using
+  the ordinary DOS 'COPY' command you can bundle  several  of
+  these files to a single file. Suppose you have 'STONED.LEV'
+  and 'FIREFIRE.LEV' on  your  harddisk.  Type  in  'COPY  /B
+  STONED.LEV + FIREFIRE.LEV SET.LEV' at  the  DOS  prompt  to
+  produce 'SET.LEV' which contains two levels (and that's why
+  it is 468 bytes long). Start the XPLOSIVE LEVEL  GAME  with
+  'XLR SET.LEV' and you can play these two levels  in  a  row
+  with warp codes and all the stuff. If you know  how  'COPY'
+  works you can probably  work  out  easier  ways  to  bundle
+  levels, for example by given them  similar  names.  If  you
+  have ten levels named 'L0.LEV' to 'L9.LEV' you can use  the
+  following  command:  'COPY  /B  L?.LEV  SET.LEV'.   It   is
+  important that you don't forget the  '/B'  switch  directly
+  after the 'COPY' command. Caution: don't delete your single
+  levels since you can't edit them easily with  the  XPLOSIVE
+  LEVEL EDITOR.
+
+  One last hint concerning the warp codes: if  you  have  the
+  same warp code twice or more times in a level set  it  will
+  cause problems.
+
+6 Short summary of the game
+
+  You as player control a rabbit. You  can  move  the  rabbit
+  using the direction keys described below. You can  plant  a
+  bomb by using the fire  key.  A  bomb  will  explode  three
+  seconds after it is planted, so make sure  that  you  won't
+  get killed  by  the  explosion.  The  explosions  are  only
+  horizontal and/  or  vertical.  Explosions  will  kill  you
+  (unless you are invulnerable), certain  types  of  monsters
+  (see the monster reference) and will atomize all extras and
+  destructible blocks. If blocks are destroyed,  there  is  a
+  chance, that extras will appear. These are described below.
+
+7 Keyboard reference
+
+  The four players use always  the  same  keys  in  both  the
+  XPLOSIVE DUEL GAME and the XPLOSIVE LEVEL  GAME.  Here  are
+  the keys::
+
+    Player Color   Up      Right    Left     Down    Fire
+    1      Red     NUM: 8  NUM: 6   NUM: 4   NUM: 2  NUM: 0
+                   (or use the cursor   keys)
+    2      Yellow  W       D        A        S       CNTRL
+    3      Green   P       Ä        L        Ö       R. SHIFT
+    4      Blue    Z       J        G        H       V
+
+  You can also use KEYCFG.EXE to reconfigure  your  keyboard.
+  If strange things happen, just  delete  'XPLOSIVE.CFG'  and
+  start the XPLOSIVE LEVEL GAME to get things fixed...
+
+8 The extras
+
+  In the XPLOSIVE LEVEL  GAME  and  the  XPLOSIVE  DUEL  GAME
+  several extras appear in the game. You can  take  them  (by
+  moving over them) or destroy them (by placing a  bomb  next
+  to them). Sometimes you may wish to  do  the  latter  thing
+  rather than the former in order to  prevent  other  players
+  from getting stronger or you just don't like  the  risk  of
+  taking the extras. The following extras appear in the game:
+
+  Range extra -- (looks  like  a  double  arrow)  this  extra
+    increases the  range  of  your  explosions  by  one.  The
+    starting range is two.
+
+  Bomb extra -- (looks like a bomb with a plus  sign  on  it)
+    this extra increases the number of  bombs  simultaneously
+    available to discharge. The starting number is of  course
+    one.
+
+  Risk extras -- (look like question marks) these extras  can
+    have different effects. Each of the four  question  marks
+    available (red, green, blue, white) has a good effect and
+    a bad effect. If you take a question mark,  the  computer
+    randomly chooses between the two effects.  We  think  you
+    should find out in detail which effect  belongs  to  each
+    question mark: flame thrower  (the  fire  key  invokes  a
+    flame thrower), slow motion (you're only half as fast  as
+    usual),  confusion   (your   direction   keys   will   be
+    exchanged), range reduction  (your  bomb  range  will  be
+    reduced to one), stone explosion (the next explosion will
+    cause blocks to appear), dematerialization (you can  move
+    through solid rock, but are not invulnerable), auto  fire
+    (you lay bombs automatically), invulnerability  (monsters
+    and explosion won't harm  you).  Each  effect  lasts  ten
+    seconds.
+
+  Star -- (looks like, well,  you  can  guess  that...)  this
+    extra comprises all the four good  effects  of  the  four
+    question marks.
+
+  Shield -- (...) take this extra to become invulnerable  for
+    ten seconds. But be careful: if  you  take  another  risk
+    extra, the effect probably will be deactivated. There can
+    only be one special effect activated at a time.
+
+  Hour glass -- (...)  stops  the  monsters  for  about  4.25
+    seconds. Note that this time is  sufficient  to  plant  a
+    bomb under them that will detonate before they spring  to
+    life again.
+
+  Carrot -- (...) eating this extras will speed you up for an
+    indefinite amount of time. Beware: the slow motion  extra
+    described above will negate the effects.
+
+  Exchange -- (green arrow and white arrow in a circle,  sort
+    of ying- yang)  this is probably the most fiendish  extra
+    in the game and especially in  the  XPLOSIVE  DUEL  GAME.
+    Many suggestions were made to abolish this extra and  put
+    its use under severe punishment of law. But under  expert
+    players as well as beginners this extra  will  cause  the
+    most fun and satisfaction and  confusion.  What  are  the
+    effects of this extra? Well, if you step on it, you and a
+    randomly determined second player will  change  position.
+    Why should this be so fiendish? Well, find out  yourself.
+    Note that in the XPLOSIVE LEVEL GAME and one player  mode
+    nothing happens at all.
+
+9 The monsters
+
+  There are 16 different monsters in the XPLOSIVE  DUEL  GAME
+  and the XPLOSIVE LEVEL GAME. There are rumors, that in  the
+  XPLOSIVE LEVEL GAME some more monsters are to be found.  So
+  watch out! Following is a  description  of  all  the  known
+  monsters in alphabetical order.
+
+  Critter -- a critter is a furry creature that wants to  eat
+    you. When you come near it, it will smell  you  and  will
+    become very  excited  at  the  prospect  of  eating  you.
+    Critters die in explosions.
+
+  Crusher -- a crusher is a gleaming red creature  with  very
+    big teeth. A crusher loves to eat rocks but is  otherwise
+    harmless. A simple explosion will kill it. Crusher can be
+    dangerous in  combination  with  other  monsters.  You'll
+    see...
+
+  Dwarf -- dwarves love to surprise the players  by  stealing
+    their bombs. They will  teleport  on  a  bomb  set  by  a
+    player, disarm it,  put  it  in  a  great  blue  bag  and
+    teleport again to escape.  A  simple  explosion  kills  a
+    dwarf.
+
+  Extra eater -- an extra eater paralyzes you for 1.5 seconds
+    if you touch it (watch out for incoming explosions!).  It
+    eats all the extras and is killed in a normal explosion.
+
+  Fireball -- a fireball is a very nervous and  unpredictable
+    creature. It will move to and fro and explode  from  time
+    to time. Kill a fireball with a stone explosion.
+
+  Ghost -- a ghost kills you, if you touch it, and is  easily
+    killed in an explosion.
+
+  Golem -- a golem is said to be a creature  made  of  stone.
+    Our golem is not only made of  stone  but  also  has  the
+    ability to make stone. So, if you see  a  golem  charging
+    you from a distance, watch out, that he does not build  a
+    wall around you which prevents your escape. Additionally,
+    if you touch a golem, your character becomes  immediately
+    confused (see the extras) for five seconds. This can be a
+    nuisance, for you lose every other  special  effect  that
+    may have been active. Golems can be killed. Because  they
+    are so giant and  immensely  strong  creatures,  "normal"
+    explosions do not knock them out but merely paralyze them
+    for 4.25 seconds. But if they stand in the center  of  an
+    explosion (a point in an explosion is called center  when
+    in at least three different  direction  there  is  fire),
+    they will get killed.
+
+  Killers -- these evil creatures only  appear  in  packs  of
+    three. They are very fast and their only goal it to  gnaw
+    your ears off which is the  unhappiest  thing  which  can
+    happen to a rabbit and will cause the  rabbit  to  commit
+    suicide. Killers die in explosions.
+
+  Living wall -- this monster is not  easily  recognized  and
+    will often block the way of an unsuspecting player.  Kill
+    a living wall by waiting on a crossroad until it moves on
+    you. Then plant a bomb and flee. That means, if a  living
+    wall is surrounded by fire in all the four directions  it
+    will die.
+
+  Mage -- a mage is very, very dangerous. It tries to get  at
+    you and then it will kill you  with  its  attack  spells.
+    Kill a mage like a golem.
+
+  Ninja -- this monster kills you and is killed in explosion.
+    Because it is only a ninja's  apprentice  it  is  not  so
+    dangerous  after  all.  From  time  to  time  a   ninja's
+    apprentice will stop  and  analyze  the  situation.  This
+    makes it very vulnerable.
+
+  Pit -- a pit is immobile. From time to time  it  will  open
+    and kill every players who steps in  the  great  gap.  To
+    kill a pit an explosion must hit it, while it is  opening
+    or closing. Pits only appear in the XPLOSIVE LEVEL GAME.
+
+  Predator -- they are invisible. Okay, if they move you will
+    see them a little bit, but if they stand still you cannot
+    see them. Predators kill you and die in explosions.
+
+  Slime --  this  monster  can  change  its  appearance   and
+    characteristics  and  that's  why  some  call  it   shape
+    shifter. Slime can convert in a  golem,  a  ghost  and  a
+    extra eater. It  will  return  to  slime  form,  when  it
+    touches a bomb or after a specific time. When  it  is  in
+    slime form, it is invulnerable. So, what you have  to  do
+    to kill a slime, is to plant bombs in  a  distance.  They
+    will kill it when it is in ghost or extra eater form.
+
+  Spider -- a spider kills players and spins webs  from  time
+    to time. If you step on a web you will be paralyzed for a
+    short time and the web will disappear.  You  can  destroy
+    webs with explosions just as the spider itself.
+
+  Turtle -- a turtle is harmless but very easily  frightened.
+    If you pester a turtle, it will stop and  block  the  way
+    for all the monsters and players. An explosion causes the
+    same behaviour. Brutal is it may sound, the only  way  to
+    kill a turtle is a stone explosion.
+
+10 Remarks about the freeware version
+
+  This is the freeware version of XPLOSIVE, which is for  the
+  most part identical to the registered version.
+
+  The major difference is, that the freeware version  may  be
+  distributed freely (i.e. without charging for it), as  long
+  as all the original files are included:
+
+  File list of the freeware version:
+
+  * 1.cpc
+
+  * 2.cpc
+
+  * 3.cpc
+
+  * 4.cpc
+
+  * 5.cpc
+
+  * 6.dmp
+
+  * 6.pal
+
+  * adv.lev
+
+  * Grafix.dmp
+
+  * Keycfg.exe
+
+  * Mouse.spr
+
+  * Play_adv.bat
+
+  * Play_pro.bat
+
+  * Play_std.bat
+
+  * Pro.lev
+
+  * Sprite.spr
+
+  * Warp.blk
+
+  * Xdr.exe
+
+  * Xe.exe
+
+  * Xgrafix.dmp
+
+  * Xlgmenu.blk
+
+  * Xlr.exe
+
+  * Xp.lev
+
+  * Xplosive.cfg
+
+  * xplosive.html
+
+  * xplosive_de.txt
+
+  * xplosive_en.txt
+
+
+                          HAVE FUN:
+                      YOUR TRIPLE TEAM
+
+
+                    Contact Information:
+         "Kai Herbertz", mailto:Kai.Herbertz@Gmx.De
+
+
+  THE TRIPLE TEAM CANNOT BE HELD RESPONSIBLE FOR ANY DAMAGE
+            THAT MIGHT OCCUR USING ITS PROGRAMS.

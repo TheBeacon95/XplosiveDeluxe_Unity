@@ -162,7 +162,7 @@ public class PlayerController : EntityAbs, PlayerIfc {
     }
 
     private void Die() {
-        m_levelManager.PlaceBlock(Position, m_deathBlock);
+        m_levelManager.PlaceBlock(Position.Round().ToVector3(), m_deathBlock);
         Destroy(gameObject);
     }
 
