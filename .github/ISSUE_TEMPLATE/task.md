@@ -1,7 +1,7 @@
 ---
 name: Task
 about: Action that needs to be performed and reviewed
-title: 'Task '
+title: 'Task: '
 labels: ''
 assignees: ''
 
