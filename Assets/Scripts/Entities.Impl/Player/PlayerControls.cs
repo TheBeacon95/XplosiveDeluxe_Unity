@@ -47,9 +47,11 @@ public class PlayerControls : ScriptableObject {
 
         if (currentlyPressedDirections.Count < 1) {
             // Do nothing.
+            m_lastDirection = Vector2Int.zero;
         }
         else if (currentlyPressedDirections.Count == 1) {
             direction = currentlyPressedDirections[0];
+            m_lastDirection = direction;
         }
         else {
             foreach (Vector2Int currentlyPressedDirection in currentlyPressedDirections) {
@@ -60,7 +62,7 @@ public class PlayerControls : ScriptableObject {
             }
         }
 
-        m_lastDirection = direction;
+        
         return direction;
     }
 
