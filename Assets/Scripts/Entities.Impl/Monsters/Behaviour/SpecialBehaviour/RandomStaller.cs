@@ -15,7 +15,7 @@ public class RandomStaller : SpecialBehaviourAbs {
     private IEnumerator StallerCoroutine(MonsterController monster) {
         while (true) {
             if (monster.IsStalled) {
-                yield return WAIT_FOR_EFFECT_TIMER;
+                yield return WAIT_FOR_EFFECT_TIMER; // Todo improve: Make the stalling independent from this Wait Timer
             }
             else {
                 YieldInstruction activeWaitInstruction = s_activeWaitInstructions[Random.Range(0, s_activeWaitInstructions.Count)];
