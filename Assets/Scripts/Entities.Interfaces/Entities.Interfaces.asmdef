@@ -1,5 +1,5 @@
 {
-    "name": "Player.Interfaces",
+    "name": "Entities.Interfaces",
     "rootNamespace": "",
     "references": [
         "GUID:0ee7ef4ced2f118429c960b035d3000e"

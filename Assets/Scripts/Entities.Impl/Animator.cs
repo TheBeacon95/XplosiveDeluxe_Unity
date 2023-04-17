@@ -9,7 +9,6 @@ public class Animator : MonoBehaviour {
     private int m_index;
     private readonly YieldInstruction m_animationYieldInstruction = new WaitForSeconds(1f / 12f); // Todo: improve
 
-    //[SerializeField]
     private SpriteHandlerAbs m_spriteHandler;
     private EntityAbs m_entity;
 

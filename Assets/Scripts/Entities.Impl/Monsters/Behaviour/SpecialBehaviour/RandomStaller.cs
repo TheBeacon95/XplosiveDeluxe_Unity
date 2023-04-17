@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "RandomStaller", menuName = "Monsters/Behaviours/Special Behaviours/Random Staller")]
-public class RandomStaller : SpecialBehaviour {
-    public override void Init(MonsterController monster, LevelManagerIfc levelManager) {
+public class RandomStaller : SpecialBehaviourAbs {
+    public override void LateInit(MonsterController monster, LevelManagerIfc levelManager) {
         monster.StartCoroutine(StallerCoroutine(monster));
+    }
+
+    public override void Stop(MonsterController monster, bool force) {
+        monster.StopCoroutine("StallerCoroutine");
     }
 
     private IEnumerator StallerCoroutine(MonsterController monster) {
         while (true) {
             if (monster.IsStalled) {
-                yield return WAIT_FOR_EFFECT_TIMER;
+                yield return WAIT_FOR_EFFECT_TIMER; // Todo improve: Make the stalling independent from this Wait Timer
             }
             else {
                 YieldInstruction activeWaitInstruction = s_activeWaitInstructions[Random.Range(0, s_activeWaitInstructions.Count)];

@@ -11,6 +11,12 @@ public class DestructibleBlockTile : EnvironmentTileAbs {
         return isGhost;
     }
 
+    public override bool IsEatable {
+        get {
+            return m_isEatable;
+        }
+    }
+
     protected override EnvironmentTileAbs OnExplode() {
         return null;
     }
@@ -27,6 +33,8 @@ public class DestructibleBlockTile : EnvironmentTileAbs {
 
     [SerializeField]
     private bool m_isPassthroughDestructible;
+    [SerializeField]
+    private bool m_isEatable;
 
     #endregion
 }

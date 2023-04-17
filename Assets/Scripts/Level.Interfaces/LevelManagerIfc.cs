@@ -47,6 +47,13 @@ public interface LevelManagerIfc {
     bool IsBombPlaceable(Vector2Int position); // todo: Consider how bombs are placed.
 
     /// <summary>
+    /// Returns a list of eatable bricks surrounding <paramref name="position"/>.
+    /// </summary>
+    /// <param name="position"></param>
+    /// <returns></returns>
+    List<Vector2Int> GetEatableBricks(Vector2Int position);
+
+    /// <summary>
     /// todo
     /// <param name="position"></param>
     void PlaceObject(GameObject item, Vector2 position); // Todo make an interface or something for items.
@@ -74,9 +81,8 @@ public interface LevelManagerIfc {
     /// Returns all the directions a monster can go in.
     /// </summary>
     /// <param name="position"></param>
-    /// <param name="isBrickMuncher"></param>
     /// <returns></returns>
-    IList<Vector2Int> GetAvailableDirections(Vector2Int position, bool isBrickMuncher = false);
+    IList<Vector2Int> GetAvailableDirections(Vector2Int position);
 
     /// <summary>
     /// Returns the player closest to <paramref name="position"/>.

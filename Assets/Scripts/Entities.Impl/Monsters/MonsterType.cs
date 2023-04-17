@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,14 +28,39 @@ public class MonsterType : ScriptableObject {
     }
 
     public void Init(MonsterController monster, LevelManagerIfc levelManager) {
-        foreach (SpecialBehaviour specialBehaviour in m_specialBehaviours) {
+        foreach (SpecialBehaviourAbs specialBehaviour in m_specialBehaviours) {
             specialBehaviour.Init(monster, levelManager);
+        }
+        LateInit(monster, levelManager);
+    }
+
+    public void LateInit(MonsterController monster, LevelManagerIfc levelManager) {
+        foreach (SpecialBehaviourAbs specialBehaviour in m_specialBehaviours) {
+            specialBehaviour.LateInit(monster, levelManager);
+        }
+    }
+
+    public void Stop(MonsterController monster, bool force) {
+        foreach (SpecialBehaviourAbs specialBehaviour in m_specialBehaviours) {
+            specialBehaviour.Stop(monster, force);
         }
     }
 
     public bool IsConfiguredProperly() {
         // Todo: Consider ProperlyConfiguredIfc (with better naming)
         return true;
+    }
+
+    public void Attack(PlayerIfc player) {
+        m_behavior.Attack(player);
+    }
+
+    public void Collect(CollectableIfc collectable) {
+        m_behavior.Collect(collectable);
+    }
+
+    public void Explode(MonoBehaviour monster, ExplosionIfc explosion) {
+        m_behavior.Explode(monster, explosion);
     }
 
     #endregion
@@ -45,32 +71,16 @@ public class MonsterType : ScriptableObject {
     protected MonsterMovementAbs m_movement;
 
     [SerializeField]
-    protected MonsterBehaviourAbs m_behavior;
+    protected MonsterBehaviour m_behavior;
 
     [SerializeField]
     protected SpriteHandlerAbs m_spriteHandler;
 
     [SerializeField]
-    protected List<SpecialBehaviour> m_specialBehaviours;
+    protected List<SpecialBehaviourAbs> m_specialBehaviours;
 
     [SerializeField]
     protected EntitySpeed m_speed;
-
-    #endregion
-
-    #region Private Methods
-
-    public void Attack(MonoBehaviour monster, PlayerIfc player) {
-        m_behavior.Attack(monster, player);
-    }
-
-    public void Collect(MonoBehaviour monster, CollectableIfc collectable) {
-        m_behavior.Collect(monster, collectable);
-    }
-
-    public void Explode(MonoBehaviour monster, ExplosionIfc explosion) {
-        m_behavior.Explode(monster, explosion);
-    }
 
     #endregion
 }

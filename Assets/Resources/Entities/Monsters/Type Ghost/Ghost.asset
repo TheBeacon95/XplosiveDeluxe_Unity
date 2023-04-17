@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0f47907739d7fb41825dcaa1c06ed41, type: 3}
+  m_Name: Ghost
+  m_EditorClassIdentifier: 
+  m_movement: {fileID: 11400000, guid: 584e3b617a6b037429fd6659fbf42a9b, type: 2}
+  m_behavior: {fileID: 11400000, guid: e074ff52ef0326b4587152e56a529afe, type: 2}
+  m_spriteHandler: {fileID: 11400000, guid: 2fcbbd7574ffea848879a990aad52556, type: 2}
+  m_specialBehaviours: []
+  m_speed: 2

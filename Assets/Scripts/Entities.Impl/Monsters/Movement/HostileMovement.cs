@@ -6,18 +6,20 @@ public class HostileMovement : MonsterMovementAbs {
 
     #region MonsterMovementAbs Members
 
-    #endregion
     public override Vector2Int GetDirection(EntityAbs monster, LevelManagerIfc levelManager) {
         Vector2Int direction = monster.Direction;
         if (levelManager.IsBetweenBlocks(monster.Position)) {
             // Follow path
             return direction;
         }
-        //Todo: Monsters shouldn't be able to turn back.
         else {
             return GetBestDirection(monster.Position.Round(), monster.Direction, levelManager);
         }
     }
+
+    #endregion
+
+    #region Private Methods
 
     private Vector2Int GetBestDirection(Vector2Int position, Vector2Int currentDirection, LevelManagerIfc levelManager) {
         IList<Vector2Int> possibleDirections = levelManager.GetAvailableDirections(position);
@@ -54,4 +56,13 @@ public class HostileMovement : MonsterMovementAbs {
             }
         }
     }
+
+    #endregion
+
+    #region Private Fields
+
+    [SerializeField]
+    private bool m_isBrickEater;
+
+    #endregion
 }

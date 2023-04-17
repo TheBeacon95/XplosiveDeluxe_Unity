@@ -23,7 +23,46 @@ public class MonsterController : EntityAbs {
             return;
         }
 
-        m_direction = m_type.GetDirection(this, m_levelManager);
+        Vector2Int direction = m_type.GetDirection(this, m_levelManager);
+        DoMove(direction);
+    }
+
+    private void OnTriggerStay2D(Collider2D other) {
+        if (other.gameObject.layer == LayerMask.NameToLayer("PlayerLayer")) {
+            Attack(other.gameObject.GetComponent<PlayerIfc>());
+        }
+        else if (other.gameObject.layer == LayerMask.NameToLayer("ItemLayer")) {
+            Collect(other.gameObject.GetComponent<CollectableIfc>());
+        }
+        else if (other.gameObject.layer == LayerMask.NameToLayer("ExplosionLayer")) {
+            Explode(other.gameObject.GetComponent<ExplosionIfc>());
+        }
+    }
+
+    private void Attack(PlayerIfc player) {
+        if (!m_isStalled && player != null) {
+            m_type.Attack(player);
+        }
+    }
+
+    private void Collect(CollectableIfc collectable) {
+        m_type.Collect(collectable);
+    }
+
+    private void Explode(ExplosionIfc explosion) {
+        m_type.Explode(this, explosion);
+    }
+
+    //private void Move() {
+    //    m_type.Move(this, m_levelManager);
+    //}
+
+    #endregion
+
+    #region Public Methods
+
+    public void DoMove(Vector2Int direction) {
+        m_direction = direction;
         if (m_direction == Vector2Int.zero) {
             IsIdle = true;
         }
@@ -33,27 +72,22 @@ public class MonsterController : EntityAbs {
         }
     }
 
-    private void OnTriggerStay2D(Collider2D other) {
-        if (other.gameObject.layer == LayerMask.NameToLayer("PlayerLayer")) {
-            Attack(other.gameObject.GetComponent<PlayerIfc>());
+    #endregion
+
+    #region Public Properties
+
+    public MonsterType Type {
+        get {
+            return m_type;
         }
-        else if (other.gameObject.layer == LayerMask.NameToLayer("ItemLayer")) {
-            m_type.Collect(this, other.gameObject.GetComponent<CollectableIfc>());
-        }
-        else if (other.gameObject.layer == LayerMask.NameToLayer("ExplosionLayer")) {
-            m_type.Explode(this, other.gameObject.GetComponent<ExplosionIfc>());
+        set {
+            if(m_type != value) {
+                m_type.Stop(this, false);
+                m_type = value;
+                m_type.LateInit(this, m_levelManager);
+            }
         }
     }
-
-    private void Attack(PlayerIfc player) {
-        if (!m_isStalled && player != null) {
-            m_type.Attack(this, player);
-        }
-    }
-
-    //private void Move() {
-    //    m_type.Move(this, m_levelManager);
-    //}
 
     #endregion
 

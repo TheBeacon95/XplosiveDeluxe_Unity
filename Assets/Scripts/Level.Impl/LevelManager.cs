@@ -13,9 +13,9 @@ public class LevelManager : MonoBehaviour, LevelManagerIfc {
     }
 
 
-    public IList<Vector2Int> GetAvailableDirections(Vector2Int position, bool isBrickMuncher = false) {
+    public IList<Vector2Int> GetAvailableDirections(Vector2Int position) {
         List<Vector2Int> availableDirections = new List<Vector2Int>();
-        foreach (Vector2Int direction in possibleDirections) {
+        foreach (Vector2Int direction in s_possibleDirections) {
             EnvironmentTileAbs nextTile = GetTile(position + direction);
             bool isTileWalkable = nextTile == null || nextTile.IsWalkable(false);
             bool isExplosion = m_explosionManager.IsExplosionHere(position + direction);
@@ -146,6 +146,22 @@ public class LevelManager : MonoBehaviour, LevelManagerIfc {
         return GetComponentInChildren(typeof(T));
     }
 
+    public List<Vector2Int> GetEatableBricks(Vector2Int position) {
+        List<Vector2Int> directions = new List<Vector2Int>() {
+            Vector2Int.up,
+            Vector2Int.right,
+            Vector2Int.down,
+            Vector2Int.left
+        };
+
+        foreach (Vector2Int direction in directions) {
+            if (!GetTile(position + direction).IsEatable) {
+                directions.Remove(direction);
+            }
+        }
+        return null;
+    }
+
     #endregion
 
     #region Private Methods
@@ -217,7 +233,7 @@ public class LevelManager : MonoBehaviour, LevelManagerIfc {
     private Tilemap m_environment;
     private BombManagerIfc m_bombManager;
     private ExplosionManagerIfc m_explosionManager;
-    private static readonly Vector2Int[] possibleDirections = { Vector2Int.up, Vector2Int.right, Vector2Int.down, Vector2Int.left };
+    private static readonly Vector2Int[] s_possibleDirections = { Vector2Int.up, Vector2Int.right, Vector2Int.down, Vector2Int.left };
 
     #endregion
 }

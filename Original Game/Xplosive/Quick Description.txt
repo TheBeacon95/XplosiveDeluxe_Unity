@@ -1,0 +1,28 @@
+Entity Impl:
+	What is an Entity:
+	All objects that interact with the players as well as the players themselves are considered entities. eg.: Monsters, Explosions, Bombs, Items etc.
+	Tiles and other Blocks are not considered Entities because they don't interact with the players. The players interact with them.
+	
+	What Entities do:
+	- Some entities move (players, monsters, possibly some items) => RigidBody
+	- They have sprites and animations
+	- They have Colliders
+	- They are all 1 x 1
+	
+	Responsibilities of Entity Impl:
+	- Create entities:
+	  - ? EntityManagerAbs => ExplosionManager, BombManager
+	  - ? EntityFactoryAbs<T> => PlayerFactory, MonsterFactory
+	- Keep track of certain entities and their positions 
+	- Move entities
+	- Delete entities
+	
+	
+	(Make it so that Entity.Impl can call tell LevelManager to Explode with explosion Ifc and Position and have a bool returned.)
+	
+Util:
+	Project that can be used by all others.
+	- Injector class (Maybe call it ManagerLocator or something).
+      - Register IdentifiableIfc
+	  - GetManager
+	

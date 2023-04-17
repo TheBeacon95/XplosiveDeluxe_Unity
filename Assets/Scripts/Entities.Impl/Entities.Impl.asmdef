@@ -1,5 +1,5 @@
 {
-    "name": "Player.Impl",
+    "name": "Entities.Impl",
     "rootNamespace": "",
     "references": [
         "GUID:4b99559916dea5740bdcd4e4eccb9ea9",

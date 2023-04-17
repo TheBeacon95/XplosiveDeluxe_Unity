@@ -45,9 +45,9 @@ public abstract class EntityAbs : MonoBehaviour, EntityIfc {
 
     #endregion
 
-    #region Protected Methods
+    #region Public Methods
 
-    protected IEnumerator Move(Vector2 direction, int speed) {
+    public IEnumerator Move(Vector2 direction, int speed) {
         m_isMoving = true;
         float timeToMove = 1f / speed / 8;
         float elapsedTime = 0f;

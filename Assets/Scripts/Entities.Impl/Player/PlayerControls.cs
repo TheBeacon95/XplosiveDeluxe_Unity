@@ -73,11 +73,11 @@ public class PlayerControls : ScriptableObject {
     [SerializeField]
     private KeyCode m_inputUp;
     [SerializeField]
+    private KeyCode m_inputRight;
+    [SerializeField]
     private KeyCode m_inputDown;
     [SerializeField]
     private KeyCode m_inputLeft;
-    [SerializeField]
-    private KeyCode m_inputRight;
     [SerializeField]
     private KeyCode m_inputFire;
 
